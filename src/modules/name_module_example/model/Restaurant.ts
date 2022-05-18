@@ -4,6 +4,8 @@ class Restaurant {
   id?: string;
   name: string;
   description: string;
+  phone: string;
+  adress: string;
   created_at: Date;
 
   constructor() {
