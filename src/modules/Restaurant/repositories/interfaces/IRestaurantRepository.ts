@@ -1,10 +1,10 @@
-import { Restaurant } from "../../model/Restaurant";
+import { Restaurant } from "../../entities/Restaurant";
 
 interface ICreateRestaurantDTO {
   name: string;
   description: string;
   phone: string;
-  adress: string;
+  address: string;
 }
 
 interface IRestaurantRepository {

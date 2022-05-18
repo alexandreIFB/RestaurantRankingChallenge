@@ -4,14 +4,19 @@ import { container } from "tsyringe";
 import { CreateRestaurantUseCase } from "./CreateRestaurantUseCase";
 
 class CreateRestaurantController {
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const createRestaurantUseCase = container.resolve(CreateRestaurantUseCase);
 
-    const { name, description, phone, adress } = request.body;
+    const { name, description, phone, address } = request.body;
 
-    createRestaurantUseCase.execute({ name, description, phone, adress });
+    const restaurant = await createRestaurantUseCase.execute({
+      name,
+      description,
+      phone,
+      address,
+    });
 
-    return response.sendStatus(201);
+    return response.status(201).json(restaurant);
   }
 }
 

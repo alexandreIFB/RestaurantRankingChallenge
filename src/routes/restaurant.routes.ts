@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { CreateRestaurantController } from "../modules/name_module_example/useCases/Restaurant/createNameExample/CreateRestaurantController";
+import { CreateRestaurantController } from "../modules/Restaurant/useCases/Restaurant/createRestaurant/CreateRestaurantController";
 
 const createRestaurantController = new CreateRestaurantController();
 

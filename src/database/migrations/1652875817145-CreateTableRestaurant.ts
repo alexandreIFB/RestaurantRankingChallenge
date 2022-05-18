@@ -27,7 +27,7 @@ export class CreateTableRestaurant1652875817145 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: "adress",
+            name: "address",
             type: "varchar",
             isNullable: false,
           },

@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
+import { Restaurant } from "../../../entities/Restaurant";
 import {
   ICreateRestaurantDTO,
   IRestaurantRepository,
@@ -12,8 +13,14 @@ class CreateRestaurantUseCase {
     private restaurantRepository: IRestaurantRepository
   ) {}
 
-  execute(newRestaurantParams: ICreateRestaurantDTO) {
-    this.restaurantRepository.create(newRestaurantParams);
+  async execute(
+    newRestaurantParams: ICreateRestaurantDTO
+  ): Promise<Restaurant> {
+    const restaurant = await this.restaurantRepository.create(
+      newRestaurantParams
+    );
+
+    return restaurant;
   }
 }
 

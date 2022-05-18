@@ -1,6 +1,6 @@
-import { Repository } from "typeorm";
+import { getRepository, Repository } from "typeorm";
 
-import { Restaurant } from "../../model/Restaurant";
+import { Restaurant } from "../../entities/Restaurant";
 import {
   ICreateRestaurantDTO,
   IRestaurantRepository,
@@ -8,6 +8,10 @@ import {
 
 class RestaurantRepository implements IRestaurantRepository {
   private repository: Repository<Restaurant>;
+
+  constructor() {
+    this.repository = getRepository(Restaurant);
+  }
 
   async create(newRestaurant: ICreateRestaurantDTO): Promise<Restaurant> {
     const restaurant = this.repository.create(newRestaurant);
