@@ -1,18 +1,19 @@
-import { injectable } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
-import { IRestaurantRepository } from "../../../repositories/interfaces/IRestaurantRepository";
-
-interface IRequest {
-  name: string;
-  description: string;
-}
+import {
+  ICreateRestaurantDTO,
+  IRestaurantRepository,
+} from "../../../repositories/interfaces/IRestaurantRepository";
 
 @injectable()
 class CreateRestaurantUseCase {
-  constructor(private restaurantRepository: IRestaurantRepository) {}
+  constructor(
+    @inject("RestaurantRepository")
+    private restaurantRepository: IRestaurantRepository
+  ) {}
 
-  execute({ name, description }: IRequest) {
-    this.restaurantRepository.create({ name, description });
+  execute(newRestaurantParams: ICreateRestaurantDTO) {
+    this.restaurantRepository.create(newRestaurantParams);
   }
 }
 
