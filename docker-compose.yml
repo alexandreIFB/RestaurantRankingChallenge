@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  database_rentx:
+    image: postgres
+    container_name: database_restaurant
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=ignite
+      - POSTGRES_DB=restaurant
+    volumes:
+      - pgdata:/data/postgres
+  app:
+    build: .
+    container_name: restaurant
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
+    links:
+      - database_restaurant
+    depends_on:
+      - database_restaurant
+
+volumes:
+  pgdata:
+    driver: local
