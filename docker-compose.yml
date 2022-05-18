@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  database_rentx:
+  database:
     image: postgres
     container_name: database_restaurant
     restart: always
@@ -9,7 +9,7 @@ services:
       - 5432:5432
     environment:
       - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=ignite
+      - POSTGRES_PASSWORD=restaurant123
       - POSTGRES_DB=restaurant
     volumes:
       - pgdata:/data/postgres
@@ -21,9 +21,9 @@ services:
     volumes:
       - .:/usr/app
     links:
-      - database_restaurant
+      - database
     depends_on:
-      - database_restaurant
+      - database
 
 volumes:
   pgdata:

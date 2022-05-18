@@ -2,7 +2,7 @@
   "type": "postgres",
   "host": "localhost",
   "username": "docker",
-  "password": "ignite",
-  "database": "rentx",
+  "password": "restaurant123",
+  "database": "restaurant",
   "port": 5432
 }
