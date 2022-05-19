@@ -9,13 +9,13 @@
     }
   },
   "paths": {
-    "/categories": {
+    "/restaurants": {
       "post": {
         "tags": [
-          "Category"
+          "Restaurant"
         ],
-        "summary": "Create a category",
-        "description": "Create a new category",
+        "summary": "Create a restaurant",
+        "description": "Create a new restaurant",
         "requestBody": {
           "content": {
             "application/json": {
@@ -27,12 +27,20 @@
                   },
                   "description": {
                     "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
                   }
                 }
               },
               "example": {
-                "name": "SUV",
-                "description": "SUV description category"
+                "name": "Trattoria",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "phone": "+5511987654321",
+                "address": "Rua Logo Ali, nº 42"
               }
             }
           }
