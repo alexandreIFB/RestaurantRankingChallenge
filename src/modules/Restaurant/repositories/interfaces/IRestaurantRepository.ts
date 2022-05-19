@@ -10,6 +10,7 @@ interface ICreateRestaurantDTO {
 interface IRestaurantRepository {
   create(newRestaurant: ICreateRestaurantDTO): Promise<Restaurant>;
   findOneByID(id: string): Promise<Restaurant>;
+  findOneByName(name: string): Promise<Restaurant>;
 }
 
 export { IRestaurantRepository, ICreateRestaurantDTO };
