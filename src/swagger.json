@@ -49,8 +49,8 @@
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Category already exist"
+          "409": {
+            "description": "Restaurant Already Exists"
           }
         }
       },
@@ -82,8 +82,8 @@
               }
             }
           },
-          "500": {
-            "description": "Category already exist"
+          "409": {
+            "description": "Restaurant already exist"
           }
         }
       }
