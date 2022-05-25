@@ -13,8 +13,8 @@ class CustomerRepository implements ICustomerRepository {
     this.repository = getRepository(Customer);
   }
 
-  async create({ name, phone }: ICreateCustomerDTO): Promise<Customer> {
-    const customer = this.repository.create({ name, phone });
+  async create(customerParams: ICreateCustomerDTO): Promise<Customer> {
+    const customer = this.repository.create(customerParams);
 
     await this.repository.save(customer);
 
