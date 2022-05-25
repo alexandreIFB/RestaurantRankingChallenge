@@ -11,7 +11,7 @@ class CreateCustomerController {
 
     const customer = await createCustomerUseCase.execute({ name, phone });
 
-    reponse.status(200).json(customer);
+    reponse.status(201).json(customer);
   }
 }
 

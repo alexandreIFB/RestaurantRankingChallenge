@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX Documentation",
-    "description": "This is an API Rent",
+    "title": "RestaurantChallenge Documentation",
+    "description": "This is an API RestaurantChallenge",
     "vension": "1.0.0s",
     "contact": {
       "email": "abreuxandi2010@gmail.com"
@@ -84,6 +84,44 @@
           },
           "409": {
             "description": "Restaurant already exist"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Create a customer",
+        "description": "Create a new customer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "John Doe",
+                "phone": "+5522987654321"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "Customer Already Exists"
           }
         }
       }
