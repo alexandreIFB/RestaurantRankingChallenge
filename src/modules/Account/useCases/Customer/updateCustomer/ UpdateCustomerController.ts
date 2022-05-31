@@ -10,13 +10,13 @@ class UpdateCustomerController {
 
     const updateCustomerUseCase = container.resolve(UpdateCustomerUseCase);
 
-    const customer = await updateCustomerUseCase.execute({
+    await updateCustomerUseCase.execute({
       id,
       name,
       phone,
     });
 
-    return response.status(200).json(customer);
+    return response.sendStatus(200);
   }
 }
 

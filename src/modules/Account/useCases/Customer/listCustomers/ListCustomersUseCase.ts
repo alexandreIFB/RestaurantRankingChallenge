@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { ICustomerRepository } from "../../../repositories/interfaces/ICustomerRespository";
 
 interface ICustomerFormated {
+  id: string;
   name: string;
   phone: string;
 }
@@ -19,6 +20,7 @@ class ListCustomersUseCase {
 
     const customersFormated = customers.map((customer) => {
       return {
+        id: customer.id,
         name: customer.name,
         phone: customer.phone,
       };
