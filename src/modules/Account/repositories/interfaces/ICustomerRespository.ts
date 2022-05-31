@@ -10,6 +10,7 @@ interface ICustomerRepository {
   findOneByID(id: string): Promise<Customer>;
   findOneByName(name: string): Promise<Customer>;
   findAll(): Promise<Customer[]>;
+  delete(id: string): Promise<void>;
 }
 
 export { ICreateCustomerDTO, ICustomerRepository };

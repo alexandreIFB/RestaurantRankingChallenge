@@ -5,16 +5,12 @@ import { UpdateCustomerUseCase } from "./ UpdateCustomerUseCae";
 
 class UpdateCustomerController {
   async handle(request: Request, response: Response) {
-    const { id } = request.params;
     const { name, phone } = request.body;
+    const { customer } = request;
 
     const updateCustomerUseCase = container.resolve(UpdateCustomerUseCase);
 
-    await updateCustomerUseCase.execute({
-      id,
-      name,
-      phone,
-    });
+    await updateCustomerUseCase.execute({ customer, name, phone });
 
     return response.sendStatus(200);
   }
