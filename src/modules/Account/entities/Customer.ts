@@ -1,5 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+
+import { Review } from "../../Restaurant/entities/Review";
 
 @Entity()
 class Customer {
@@ -11,6 +19,9 @@ class Customer {
 
   @Column()
   phone: string;
+
+  @OneToMany(() => Review, (review) => review.customerId)
+  reviews: Review[];
 
   @CreateDateColumn()
   created_at: Date;

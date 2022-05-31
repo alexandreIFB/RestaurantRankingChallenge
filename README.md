@@ -13,6 +13,10 @@ Customer
 
 [x] - Se possivel atualizar dados de um customer
 
-[x] - Se possivel listar todos usuarios
+[x] - Se possivel listar todos customer
+
+[] - Se possivel deletar um customer pelo id
+
+Futuro
 
 [] - Apenas usuario autenticados podem listar todos usuarios
