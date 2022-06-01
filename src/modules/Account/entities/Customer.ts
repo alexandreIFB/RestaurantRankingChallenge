@@ -20,7 +20,7 @@ class Customer {
   @Column()
   phone: string;
 
-  @OneToMany(() => Review, (review) => review.customerId)
+  @OneToMany(() => Review, (review) => review.customer)
   reviews: Review[];
 
   @CreateDateColumn()

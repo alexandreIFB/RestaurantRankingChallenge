@@ -6,17 +6,21 @@ import { Restaurant } from "./Restaurant";
 @Entity()
 class Review {
   @PrimaryColumn("uuid")
+  customerId?: string;
+
   @ManyToOne(() => Customer, (customer) => customer.reviews)
-  customerId: Customer;
+  customer: Customer;
 
   @Column()
   stars: number;
 
   @Column()
-  coment: string;
+  comment: string;
 
   @PrimaryColumn("uuid")
-  @ManyToOne(() => Restaurant, (restaurant) => restaurant.reviews)
+  restaurantId?: string;
+
+  @ManyToOne(() => Restaurant)
   restaurant: Restaurant;
 }
 

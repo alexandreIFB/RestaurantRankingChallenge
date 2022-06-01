@@ -19,17 +19,17 @@ export class ReviewRestaurantRelation1654035970096
             isPrimary: true,
           },
           {
-            name: "restaurant",
+            name: "restaurantId",
             type: "uuid",
             isPrimary: true,
           },
           {
             name: "stars",
-            type: "int",
+            type: "decimal",
             isNullable: false,
           },
           {
-            name: "coment",
+            name: "comment",
             type: "varchar",
             isNullable: false,
           },
@@ -49,7 +49,7 @@ export class ReviewRestaurantRelation1654035970096
     await queryRunner.createForeignKey(
       "review",
       new TableForeignKey({
-        columnNames: ["restaurant"],
+        columnNames: ["restaurantId"],
         referencedTableName: "restaurant",
         referencedColumnNames: ["id"],
       })
