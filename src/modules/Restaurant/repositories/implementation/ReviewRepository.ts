@@ -20,6 +20,22 @@ class ReviewRepository implements IReviewRepository {
 
     return review;
   }
+
+  async findReviewsByCustomerId(id: string): Promise<Review[]> {
+    // const reviews = await this.repository.find({ customerId: id });
+
+    const values: Review[] = await this.repository
+      .createQueryBuilder("review")
+      .where({ customerId: id })
+      .select([
+        "review.restaurantId AS restaurantId",
+        "review.stars AS stars",
+        "review.comment AS comment",
+      ])
+      .execute();
+
+    return values;
+  }
 }
 
 export { ReviewRepository };

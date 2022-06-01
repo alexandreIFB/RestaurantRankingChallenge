@@ -11,6 +11,7 @@ interface ICreateReviewsDTO {
 
 interface IReviewRepository {
   create(newReview: ICreateReviewsDTO): Promise<Review>;
+  findReviewsByCustomerId(id: string): Promise<Review[]>;
 }
 
 export { IReviewRepository, ICreateReviewsDTO };
