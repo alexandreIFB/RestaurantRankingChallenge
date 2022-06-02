@@ -11,6 +11,7 @@ interface ICustomerRepository {
   findOneByName(name: string): Promise<Customer>;
   findAll(): Promise<Customer[]>;
   delete(id: string): Promise<void>;
+  findOneWithReviews(id: string);
 }
 
 export { ICreateCustomerDTO, ICustomerRepository };

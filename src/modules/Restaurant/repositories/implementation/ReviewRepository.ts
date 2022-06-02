@@ -22,7 +22,12 @@ class ReviewRepository implements IReviewRepository {
   }
 
   async findReviewsByCustomerId(id: string): Promise<Review[]> {
-    // const reviews = await this.repository.find({ customerId: id });
+    // const reviews = await this.repository.find({
+    //   where: { customerId: id },
+    //   select: {
+    //     customerId: true,
+    //   },
+    // });
 
     const values: Review[] = await this.repository
       .createQueryBuilder("review")

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { getRepository, Repository } from "typeorm";
 
 import { Customer } from "../../entities/Customer";
@@ -37,6 +38,41 @@ class CustomerRepository implements ICustomerRepository {
   }
   async delete(id: string): Promise<void> {
     await this.repository.delete(id);
+  }
+
+  async findOneWithReviews(id: string) {
+    const reviews = await this.repository
+      .createQueryBuilder("customer")
+      .leftJoinAndSelect("customer.reviews", "review")
+      .where("customer.id = :id", { id })
+      .select([
+        "review.stars AS stars",
+        "review.comment AS comment",
+        "review.restaurantId AS restaurantId",
+      ])
+      .getRawMany();
+
+    const averageStarsGiven = await this.repository
+      .createQueryBuilder("customer")
+      .leftJoinAndSelect("customer.reviews", "review")
+      .where("customer.id = :id", { id })
+      .select("AVG(review.stars)", "starsAvarege")
+      .getRawOne();
+
+    reviews.forEach((review) => {
+      review.restaurantId = review.restaurantid;
+      delete review.restaurantid;
+
+      return review;
+    });
+
+    const reviewCustomer = {
+      customerId: id,
+      averageStarsGiven: averageStarsGiven.starsAvarege,
+      reviews,
+    };
+
+    return reviewCustomer;
   }
 }
 
